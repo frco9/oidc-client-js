@@ -182,7 +182,7 @@ export class SessionMonitor {
         }).catch(err => {
             if (this._sub) {
                 Log.debug("SessionMonitor._callback: Error calling queryCurrentSigninSession; raising signed out event", err.message);
-                this._userManager.events._raiseUserSignedOut();
+                this._userManager.events._raiseSilentRenewError(err);
             }
         });
     }
